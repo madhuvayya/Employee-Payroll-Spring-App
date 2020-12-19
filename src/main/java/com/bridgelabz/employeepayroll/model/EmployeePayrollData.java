@@ -1,4 +1,6 @@
-package com.bridgelabz.employeepayroll;
+package com.bridgelabz.employeepayroll.model;
+
+import com.bridgelabz.employeepayroll.dto.EmployeePayrollDTO;
 
 public class EmployeePayrollData {
 	private int employeeId;
@@ -7,10 +9,10 @@ public class EmployeePayrollData {
 	
 	public EmployeePayrollData() {}
 
-	public EmployeePayrollData(String name, long salary, int employeeId) {
-		this.name = name;
-		this.salary = salary;
-		this.employeeId = employeeId;
+	public EmployeePayrollData(int empId, EmployeePayrollDTO employeePayrollDTO) {
+		this.name = employeePayrollDTO.name;
+		this.salary = employeePayrollDTO.salary;
+		this.employeeId = empId;
 	}
 
 	public int getEmployeeId() {
