@@ -33,9 +33,9 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 	}
 
 	@Override
-	public EmployeePayrollData updateEmployeePayrollData(EmployeePayrollDTO employeePayrollDTO) {
+	public EmployeePayrollData updateEmployeePayrollData(int empId, EmployeePayrollDTO employeePayrollDTO) {
 		EmployeePayrollData employeePayrollData = null;
-		employeePayrollData = new EmployeePayrollData(1, employeePayrollDTO);
+		employeePayrollData = new EmployeePayrollData(empId, employeePayrollDTO);
 		return employeePayrollData;
 	}
 
