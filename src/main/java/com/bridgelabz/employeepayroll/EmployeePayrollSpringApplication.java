@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @Slf4j
-public class EmployeePayrollSpringAppApplication {
+public class EmployeePayrollSpringApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmployeePayrollSpringAppApplication.class, args);
+		SpringApplication.run(EmployeePayrollSpringApplication.class, args);
 		log.info("Employee Payroll App started");
 	}
 
