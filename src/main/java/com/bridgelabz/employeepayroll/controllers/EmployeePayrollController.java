@@ -19,6 +19,8 @@ import com.bridgelabz.employeepayroll.dto.ResponseDTO;
 import com.bridgelabz.employeepayroll.model.EmployeePayrollData;
 import com.bridgelabz.employeepayroll.services.IEmployeePayrollService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/employeepayrollservice")
 public class EmployeePayrollController {
@@ -43,7 +45,8 @@ public class EmployeePayrollController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<ResponseDTO> addEmployeePayrollData(@RequestBody EmployeePayrollDTO empPayrollDTO) {
+	public ResponseEntity<ResponseDTO> addEmployeePayrollData(
+											@Valid @RequestBody EmployeePayrollDTO empPayrollDTO) {
 		EmployeePayrollData employeePayrollData = null;
 		employeePayrollData = employeePayrollService.createEmployeePayrollData(empPayrollDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Created Employee Payroll Data Successfully:", employeePayrollData);
@@ -52,7 +55,7 @@ public class EmployeePayrollController {
 	
 	@PutMapping("/update/{empId}")
 	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable("empId") int empId,
-																	@RequestBody EmployeePayrollDTO empPayrollDTO) {
+																@Valid	@RequestBody EmployeePayrollDTO empPayrollDTO) {
 		EmployeePayrollData employeePayrollData = null;
 		employeePayrollData = employeePayrollService.updateEmployeePayrollData(empId, empPayrollDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Updated Employee Payroll Data Successfully:", employeePayrollData); 
