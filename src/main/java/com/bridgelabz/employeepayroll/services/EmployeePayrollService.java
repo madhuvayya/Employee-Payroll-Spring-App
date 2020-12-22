@@ -3,6 +3,7 @@ package com.bridgelabz.employeepayroll.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bridgelabz.employeepayroll.exceptions.EmployeePayrollException;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.employeepayroll.dto.EmployeePayrollDTO;
@@ -20,7 +21,10 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 
 	@Override
 	public EmployeePayrollData getEmployeePayrollDataById(int empId) {
-		return empPayrollList.get(empId-1);
+		return empPayrollList.stream()
+				.filter(list -> list.getEmployeeId()==empId)
+				.findFirst()
+				.orElseThrow(() -> new EmployeePayrollException("Employee not present"));
 	}
 
 	@Override
