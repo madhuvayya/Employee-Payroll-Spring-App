@@ -34,16 +34,23 @@ public class EmployeePayrollController {
 	public ResponseEntity<ResponseDTO> getEmployeePayrollData() {
 		List<EmployeePayrollData> empDataList = employeePayrollService.getEmployeePayrollData();
 		ResponseDTO responseDTO = new ResponseDTO("Get call successfully", empDataList);
-		return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 	
 	@GetMapping("/get/{empId}")
 	public ResponseEntity<ResponseDTO> getEmployeePayrollData(@PathVariable("empId") int empId){
 		EmployeePayrollData employeePayrollData = employeePayrollService.getEmployeePayrollDataById(empId);
-		ResponseDTO responseDTO = new ResponseDTO("Get call For Id Successfull", employeePayrollData);
+		ResponseDTO responseDTO = new ResponseDTO("Get call For Id Successful", employeePayrollData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
-	
+
+	@GetMapping("/department/{department}")
+	public ResponseEntity<ResponseDTO> addEmployeePayrollData(@PathVariable("department") String department) {
+		List<EmployeePayrollData> empDataList = employeePayrollService.getEmployeeByDepartment(department);
+		ResponseDTO responseDTO = new ResponseDTO("Get call for department successfully", empDataList);
+		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+	}
+
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> addEmployeePayrollData(
 											@Valid @RequestBody EmployeePayrollDTO empPayrollDTO) {
