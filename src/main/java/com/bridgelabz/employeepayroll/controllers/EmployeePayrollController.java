@@ -32,16 +32,14 @@ public class EmployeePayrollController {
 
 	@RequestMapping(value = {"","/","/get"})
 	public ResponseEntity<ResponseDTO> getEmployeePayrollData() {
-		List<EmployeePayrollData> empDataList = null;
-		empDataList = employeePayrollService.getEmployeePayrollData();
+		List<EmployeePayrollData> empDataList = employeePayrollService.getEmployeePayrollData();
 		ResponseDTO responseDTO = new ResponseDTO("Get call successfully", empDataList);
-		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+		return new ResponseEntity<>(responseDTO, HttpStatus.OK);
 	}
 	
 	@GetMapping("/get/{empId}")
 	public ResponseEntity<ResponseDTO> getEmployeePayrollData(@PathVariable("empId") int empId){
-		EmployeePayrollData employeePayrollData = null;
-		employeePayrollData = employeePayrollService.getEmployeePayrollDataById(empId);
+		EmployeePayrollData employeePayrollData = employeePayrollService.getEmployeePayrollDataById(empId);
 		ResponseDTO responseDTO = new ResponseDTO("Get call For Id Successfull", employeePayrollData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
@@ -50,8 +48,7 @@ public class EmployeePayrollController {
 	public ResponseEntity<ResponseDTO> addEmployeePayrollData(
 											@Valid @RequestBody EmployeePayrollDTO empPayrollDTO) {
 		log.debug("Employee DTO:"+ empPayrollDTO.toString());
-		EmployeePayrollData employeePayrollData = null;
-		employeePayrollData = employeePayrollService.createEmployeePayrollData(empPayrollDTO);
+		EmployeePayrollData employeePayrollData = employeePayrollService.createEmployeePayrollData(empPayrollDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Created Employee Payroll Data Successfully:", employeePayrollData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
@@ -59,8 +56,7 @@ public class EmployeePayrollController {
 	@PutMapping("/update/{empId}")
 	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable("empId") int empId,
 																@Valid	@RequestBody EmployeePayrollDTO empPayrollDTO) {
-		EmployeePayrollData employeePayrollData = null;
-		employeePayrollData = employeePayrollService.updateEmployeePayrollData(empId, empPayrollDTO);
+		EmployeePayrollData employeePayrollData = employeePayrollService.updateEmployeePayrollData(empId, empPayrollDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Updated Employee Payroll Data Successfully:", employeePayrollData); 
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
