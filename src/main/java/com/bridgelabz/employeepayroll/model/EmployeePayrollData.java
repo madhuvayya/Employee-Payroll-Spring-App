@@ -38,8 +38,11 @@ public @Data class EmployeePayrollData {
 	
 	public EmployeePayrollData() {}
 
-	public EmployeePayrollData(int empId, EmployeePayrollDTO employeePayrollDTO) {
-		this.employeeId = empId;
+	public EmployeePayrollData(EmployeePayrollDTO employeePayrollDTO) {
+		this.updateEmployeePayrollData(employeePayrollDTO);
+	}
+
+	public void updateEmployeePayrollData( EmployeePayrollDTO employeePayrollDTO) {
 		this.name = employeePayrollDTO.name;
 		this.salary = employeePayrollDTO.salary;
 		this.gender = employeePayrollDTO.gender;
